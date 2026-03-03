@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { ensureFreshToken, type GoogleSession, ensureChildFolder, ensureFile, loadJson, writeJson, resumableUpload, downloadFileBlob, driveJson } from '../lib/google';
 import { TransformWrapper, TransformComponent } from 'react-zoom-pan-pinch';
 import * as pdfjsLib from 'pdfjs-dist';
-import pdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?url';
+import pdfWorker from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
 import { Asset, Layer, Result, Status } from '../lib/types';
 import { PDFDocument, StandardFonts } from 'pdf-lib';
 import ExcelJS from 'exceljs';
