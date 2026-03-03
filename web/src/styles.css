@@ -1,0 +1,12 @@
+.btn{padding:8px 12px;border:1px solid #ccc;border-radius:10px;background:#fff;cursor:pointer}
+.btn.primary{background:#111;color:#fff;border-color:#111}
+.btn.danger{background:#b00020;color:#fff;border-color:#b00020}
+.card{border:1px solid #e5e5e5;border-radius:14px;padding:14px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.small{font-size:12px;color:#666}
+input,select,textarea{padding:8px 10px;border:1px solid #ccc;border-radius:10px}
+textarea{min-height:72px}
+code{background:#f6f6f6;padding:2px 6px;border-radius:8px}
+.badge{display:inline-block;padding:2px 8px;border-radius:999px;border:1px solid #ccc;font-size:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width: 900px){.grid2{grid-template-columns:1fr}}
