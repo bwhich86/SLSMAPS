@@ -317,7 +317,8 @@ export default function Site() {
       });
     }
     const buf = await wb.xlsx.writeBuffer();
-    return new Blob([buf], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+return new Blob([new Uint8Array(buf as ArrayBuffer)], {
+  type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
   }
 
   async function uploadReport() {
