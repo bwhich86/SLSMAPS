@@ -288,7 +288,7 @@ export default function Site() {
     }
 
     const bytes = await pdfDoc.save();
-    return new Blob([bytes], { type: 'application/pdf' });
+    return new Blob([new Uint8Array(bytes)], { type: 'application/pdf' });
   }
 
   async function generateExcelBlob(): Promise<Blob> {
