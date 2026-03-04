@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { initGoogleApis, signInGetToken, type GoogleSession, createFolder, createJsonFile, driveJson, ensureChildFolder } from '../lib/google';
 import { loadPicker, pickFolder } from '../lib/picker';
 import { Link } from 'react-router-dom';
+import { initGoogleApis, signInGetToken, ensureFreshToken, type GoogleSession, ... } from '../lib/google';
 
 const CLIENT_ID = import.meta.env.VITE_GOOGLE_CLIENT_ID as string;
 const API_KEY = import.meta.env.VITE_GOOGLE_API_KEY as string;
@@ -41,6 +42,19 @@ export default function Home() {
     (async () => {
       setStatus('Loading Google libraries…');
       await initGoogleApis();
+      // If we have a saved session, refresh it; if refresh fails, clear it and require login.
+const saved = loadState();
+if (saved.session) {
+  try {
+    const fresh = await ensureFreshToken(saved.session, CLIENT_ID);
+    const next = { ...saved, session: fresh };
+    setState(next);
+    saveState(next);
+  } catch {
+    localStorage.removeItem(LS_KEY);
+    setState({});
+  }
+}
       setReady(true);
       setStatus('');
     })();
