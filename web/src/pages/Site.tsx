@@ -68,6 +68,9 @@ export default function Site() {
     (async () => {
       if (!siteKey) return;
       if (!session) return;
+      const fresh = await ensureFreshToken(session, CLIENT_ID);
+setSession(fresh);
+localStorage.setItem(LS_KEY, JSON.stringify({ session: fresh }));
       setMsg('Refreshing token…');
       const fresh = await ensureFreshToken(session, CLIENT_ID);
       setSession(fresh);
